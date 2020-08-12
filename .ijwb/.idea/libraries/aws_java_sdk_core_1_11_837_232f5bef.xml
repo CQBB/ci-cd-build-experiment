@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="aws-java-sdk-core-1.11.837_232f5bef">
+    <CLASSES>
+      <root url="jar:///private/var/tmp/_bazel_fangboyang/f1636253cf437df3718f4d5b48e3269e/external/maven/v1/https/jcenter.bintray.com/com/amazonaws/aws-java-sdk-core/1.11.837/aws-java-sdk-core-1.11.837.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
