@@ -14,6 +14,8 @@ jobs:
       - run: sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
       - run: echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
       - run: sudo apt update && sudo apt install bazel
+      - checkout
+      - run: bazel build java-maven
 workflows:
   welcome:
     jobs:
