@@ -6,10 +6,9 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 jobs:
   build:
-    macos:
-      xcode: 11.3.0
+    machine: true
     steps:
-      - run: xcodebuild -version
+      - run: echo "hello world"
 workflows:
   welcome:
     jobs:
