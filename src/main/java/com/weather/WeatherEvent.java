@@ -1,4 +1,4 @@
-package weather;
+package com.weather;
 
 public class WeatherEvent {
     public String locationName;

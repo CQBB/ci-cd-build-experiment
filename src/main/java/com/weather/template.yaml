@@ -24,8 +24,8 @@ Resources:
   WeatherEventLambda:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./../../../../bazel-bin/src/main/java/weather/weather_deploy.jar
-      Handler: weather.WeatherEventLambda::handler
+      CodeUri: ./../../../../../bazel-bin/src/main/java/com.weather/weather_deploy.jar
+      Handler: com.weather.WeatherEventLambda::handler
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref LocationsTable
@@ -39,8 +39,8 @@ Resources:
   WeatherQueryLambda:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./../../../../bazel-bin/src/main/java/weather/weather_deploy.jar
-      Handler: weather.WeatherQueryLambda::handler
+      CodeUri: ./../../../../../bazel-bin/src/main/java/com.weather/weather_deploy.jar
+      Handler: com.weather.WeatherQueryLambda::handler
       Policies:
         - DynamoDBReadPolicy:
             TableName: !Ref LocationsTable
