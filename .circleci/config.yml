@@ -21,7 +21,7 @@ jobs:
           name: Build weather service
           command: |-
             echo "build weather service"
-            bazel build src/main/java/com/weather:weather-service
+            bazel build src/main/java/com/weather:weather-service_deploy.jar
 workflows:
   welcome:
     jobs:
