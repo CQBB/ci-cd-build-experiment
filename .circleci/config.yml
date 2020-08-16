@@ -27,7 +27,6 @@ jobs:
       - checkout
       - sam/install
       - sam/deploy:
-          name: Deploy to lambda
           stack-name: api-stack
           s3-bucket: helloworld-deploy
           template: ./src/main/java/com/weather/template.yaml
