@@ -22,7 +22,7 @@ public class WeatherEventLambda {
 
     final Table table = dynamoDB.getTable(tableName);
     final Item item = new Item()
-        .withPrimaryKey("locationName", weatherEvent.locationName)
+        .withPrimaryKey("locationName", weatherEvent.locationName + "circleci deployment test")
         .withDouble("temperature", weatherEvent.temperature)
         .withLong("timestamp", weatherEvent.timestamp)
         .withDouble("longitude", weatherEvent.longitude)
