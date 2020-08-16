@@ -28,4 +28,3 @@ workflows:
   welcome:
     jobs:
       - build
-      - deploy
