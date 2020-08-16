@@ -30,7 +30,7 @@ public class WeatherQueryLambda {
 
     final List<WeatherEvent> events = scanResult.getItems().stream()
         .map(item -> new WeatherEvent(
-            item.get("locationName").getS() + " circleci test",
+            item.get("locationName").getS() + " circleci test 12:27",
             Double.parseDouble(item.get("temperature").getN()),
             Long.parseLong(item.get("timestamp").getN()),
             Double.parseDouble(item.get("longitude").getN()),
