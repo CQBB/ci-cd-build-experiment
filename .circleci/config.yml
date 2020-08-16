@@ -6,6 +6,7 @@ orbs:
 jobs:
   build:
     machine: true
+    executor: sam/default
     steps:
       - run:
           name: Install bazel
@@ -21,15 +22,8 @@ jobs:
           command: |-
             echo "build weather service"
             bazel build src/main/java/com/weather:weather-service_deploy.jar
-  deploy:
-    executor: sam/default
-    steps:
-      - checkout
       - sam/install
-      - sam/deploy:
-          stack-name: api-stack
-          s3-bucket: helloworld-deploy
-          template: ./src/main/java/com/weather/template.yaml
+      - run: sam deploy --s3-bucket helloworld-deploy --stack-name api-stack --capabilities CAPABILITY_IAM
 workflows:
   welcome:
     jobs:
