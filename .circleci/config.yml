@@ -23,7 +23,7 @@ jobs:
             echo "build weather service"
             bazel build src/main/java/com/weather:weather-service_deploy.jar
       - sam/install
-      - run: sam deploy --s3-bucket helloworld-deploy --stack-name api-stack --capabilities CAPABILITY_IAM
+      - run: sam deploy --s3-bucket helloworld-deploy --stack-name api-stack --capabilities CAPABILITY_IAM --template-file src/main/java/com/weather/template.yaml
 workflows:
   welcome:
     jobs:
