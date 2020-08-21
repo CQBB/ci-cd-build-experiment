@@ -2,20 +2,28 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
+  sam: circleci/aws-serverless@1.0.1
 jobs:
   build:
     machine: true
+    executor: sam/default
     steps:
-      # install bazel
-      - run: sudo apt install curl gnupg
-      - run: curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
-      - run: sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
-      - run: echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-      - run: sudo apt update && sudo apt install bazel
+      - run:
+          name: Install bazel
+          command: |-
+            sudo apt install curl gnupg
+            curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
+            sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
+            echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+            sudo apt update && sudo apt install bazel
       - checkout
-      - run: ls
+      - run:
+          name: Build weather service
+          command: |-
+            echo "build weather service"
+            bazel build src/main/java/com/weather:weather-service_deploy.jar
+      - sam/install
+      - run: sam deploy --s3-bucket helloworld-deploy --stack-name api-stack --capabilities CAPABILITY_IAM --template-file src/main/java/com/weather/template.yaml
 workflows:
   welcome:
     jobs:
